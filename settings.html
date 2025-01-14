@@ -10,6 +10,13 @@
   <h1>Settings</h1>
   <label for="embed-link">Embed Link:</label>
   <input type="text" id="embed-link" placeholder="Enter your embed link here" value="https://coda.io/embed/pgh3jx3xYN/_sub1Cjrg?viewMode=embedplay">
+  <br>
+  <label for="bg-color">Background Color:</label>
+  <input type="color" id="bg-color">
+  <br>
+  <label for="text-color">Text Color:</label>
+  <input type="color" id="text-color">
+  <br>
   <button id="save-settings">Save Settings</button>
   <script>
     fetch('nav.html')
@@ -17,12 +24,33 @@
       .then(data => {
         document.getElementById('nav-placeholder').innerHTML = data;
       });
-  </script>
-  <script>
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const embedLink = localStorage.getItem('embedLink') || 'https://coda.io/embed/pgh3jx3xYN/_sub1Cjrg?viewMode=embedplay';
+      document.getElementById('embed-link').value = embedLink;
+
+      const bgColor = localStorage.getItem('bgColor') || '#ffffff';
+      document.getElementById('bg-color').value = bgColor;
+      document.body.style.backgroundColor = bgColor;
+
+      const textColor = localStorage.getItem('textColor') || '#000000';
+      document.getElementById('text-color').value = textColor;
+      document.body.style.color = textColor;
+    });
+
     document.getElementById('save-settings').addEventListener('click', function() {
-        const embedLink = document.getElementById('embed-link').value;
-        localStorage.setItem('embedLink', embedLink);
-        alert('Settings saved!');
+      const embedLink = document.getElementById('embed-link').value;
+      localStorage.setItem('embedLink', embedLink);
+
+      const bgColor = document.getElementById('bg-color').value;
+      localStorage.setItem('bgColor', bgColor);
+      document.body.style.backgroundColor = bgColor;
+
+      const textColor = document.getElementById('text-color').value;
+      localStorage.setItem('textColor', textColor);
+      document.body.style.color = textColor;
+
+      alert('Settings saved!');
     });
   </script>
 </body>

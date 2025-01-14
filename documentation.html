@@ -20,13 +20,20 @@
     <!-- README.md content will be inserted here -->
   </div>
   <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const bgColor = localStorage.getItem('bgColor') || '#ffffff';
+      document.body.style.backgroundColor = bgColor;
+
+      const textColor = localStorage.getItem('textColor') || '#000000';
+      document.body.style.color = textColor;
+    });
+
     fetch('nav.html')
       .then(response => response.text())
       .then(data => {
         document.getElementById('nav-placeholder').innerHTML = data;
       });
-  </script>
-  <script>
+
     fetch('README.md')
       .then(response => response.text())
       .then(text => {
