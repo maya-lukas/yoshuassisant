@@ -19,6 +19,7 @@
   </style>
 </head>
 <body>
+  <div id="nav-placeholder"></div>
   <h1>Welcome to My App</h1>
   <p>I want to create a simple ai assistant that can manage my personal emails and calendar</p>
   <p>Please read our <a href='privacy_policy.html'>Privacy Policy</a>.</p>
@@ -32,6 +33,13 @@
         const embedLink = localStorage.getItem('embedLink') || 'https://coda.io/embed/pgh3jx3xYN/_sub1Cjrg?viewMode=embedplay';
         document.getElementById('embed-frame').src = embedLink;
     });
+  </script>
+  <script>
+    fetch('nav.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('nav-placeholder').innerHTML = data;
+      });
   </script>
 </body>
 </html>

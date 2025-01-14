@@ -6,10 +6,18 @@
   <title>Settings</title>
 </head>
 <body>
+  <div id="nav-placeholder"></div>
   <h1>Settings</h1>
   <label for="embed-link">Embed Link:</label>
   <input type="text" id="embed-link" placeholder="Enter your embed link here" value="https://coda.io/embed/pgh3jx3xYN/_sub1Cjrg?viewMode=embedplay">
   <button id="save-settings">Save Settings</button>
+  <script>
+    fetch('nav.html')
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('nav-placeholder').innerHTML = data;
+      });
+  </script>
   <script>
     document.getElementById('save-settings').addEventListener('click', function() {
         const embedLink = document.getElementById('embed-link').value;
