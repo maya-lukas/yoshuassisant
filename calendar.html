@@ -13,6 +13,14 @@
     </style>
 </head>
 <body>
+    <div id="nav-placeholder"></div>
     <iframe src="https://calendar.google.com/calendar/embed?src=lukas%40livetheworld.com&ctz=Europe%2FMadrid" frameborder="0" scrolling="no"></iframe>
+    <script>
+        fetch('nav.html')
+          .then(response => response.text())
+          .then(data => {
+            document.getElementById('nav-placeholder').innerHTML = data;
+          });
+    </script>
 </body>
 </html>
